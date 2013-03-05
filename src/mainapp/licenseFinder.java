@@ -9,6 +9,7 @@ package mainapp;
  *  After all these are done, the results in the array are displayed   
  */
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.regex.*;
 import mainapp.fileUtil;
 
@@ -19,15 +20,31 @@ public class licenseFinder {
 	}
 
 	public void run() {
-		StringBuilder csvFile = new StringBuilder();
+		String csvFile = "";
+		// System.out.println(new File("bin/licenseplates.csv").canRead());
 		try {
-			csvFile = fileUtil.load("licenseplates.csv", "");
+			csvFile = fileUtil.load("licenseplates.csv", "bin/").toString();
 		} catch (Exception e) {
-			System.out.println("nope.mp4");
+			System.out.println("File not found");
 		}
-//		String[] format =   csvFile.split(",");
-	//	for(int i = 0; i < format.length; i++){
-			System.out.println(csvFile);
-		//}
+		String[] format = csvFile.split(",");
+		ArrayList<String> output = new ArrayList<String>(5);
+		for (int i = 0; i < format.length; i++) {
+			if(isCorrectFormat(format[i])){
+				if(matchesDescription(format[i])){
+					output.add(format[i]);
+				}
+			}
+		}
+	}
+
+	private boolean matchesDescription(String string) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	private boolean isCorrectFormat(String string) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
