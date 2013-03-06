@@ -30,20 +30,20 @@ public class licenseFinder {
 		String[] format = csvFile.split(",");
 		ArrayList<String> output = new ArrayList<String>(5);
 		for (int i = 0; i < format.length; i++) {
-			if(isCorrectFormat(format[i])){
-				if(matchesDescription(format[i])){
+			if (isCorrectFormat(format[i])) {
+				if (matchesDescription(format[i])) {
 					output.add(format[i]);
 				}
 			}
 		}
 	}
 
-	private boolean matchesDescription(String string) {
+	public static boolean isCorrectFormat(String string) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	private boolean isCorrectFormat(String string) {
+	public static boolean matchesDescription(String string) {
 		// TODO Auto-generated method stub
 		return false;
 	}
