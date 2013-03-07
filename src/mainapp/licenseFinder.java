@@ -41,7 +41,7 @@ public class licenseFinder {
 			}
 		}
 		long now = System.nanoTime();
-		System.out.println(((now - then)/Math.pow(10, 9))+" nanoSecs");
+		System.out.println(((now - then)/Math.pow(10, 9))+" times ten to the power of minus 9 nanoSeconds");
 		for(String s: output){
 			System.out.println(s);
 		}
@@ -152,6 +152,3 @@ public class licenseFinder {
 		}*/
 	}
 }
-// Handy way of finding last part of license plate;
-// input.substring(input.lastIndexOf(" "),input.length()).length()
-// (Assumes spaces were used)
