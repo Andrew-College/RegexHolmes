@@ -10,6 +10,7 @@ package mainapp;
  */
 import java.util.ArrayList;
 import java.util.regex.Pattern;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -42,9 +43,36 @@ public class licenseFinder {
 		}
 		long now = System.nanoTime();
 		System.out.println(((now - then)/Math.pow(10, 9))+" times ten to the power of minus 9 nanoSeconds");
-		for(String s: output){
-			System.out.println(s);
+		
+		String[] finalOutput = Arrays.copyOf(output.toArray(), output.toArray().length, String[].class);
+
+		finalOutput = orderedPrint(finalOutput);
+		for(int i = 0; i < finalOutput.length; i++){
+			System.out.println(finalOutput[i]);
 		}
+	}
+	
+	private static String[] orderedPrint(String[] input){
+		String temp = "";
+		for(int i = 0; i < input.length; i++){
+			for(int j = 0; j < input.length-1; j++){
+				//System.out.println(input[j].substring(0,2) + " vs " + input[j+1].substring(0,2));
+				//Future note; substring(n,(m-1)) <==the second one has 1 subtracted
+				if(Integer.parseInt(input[j].substring(0,2)) > Integer.parseInt(input[j+1].substring(0,2))){
+					temp = input[j];
+					input[j] = input[j+1];
+					input[j+1] = temp;
+				}
+				if(Integer.parseInt(input[j].substring(0,2)) == Integer.parseInt(input[j+1].substring(0,2))){
+					if(Integer.parseInt(input[j].substring(input[j].lastIndexOf(" ")+1)) > Integer.parseInt(input[j+1].substring(input[j+1].lastIndexOf(" ")+1))){
+						temp = input[j];
+						input[j] = input[j+1];
+						input[j+1] = temp;
+					}
+				}
+			}
+		}
+		return input;
 	}
 
 	public static boolean isCorrectFormat(String input) {
