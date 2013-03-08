@@ -23,6 +23,7 @@ public class licenseFinder {
 
 	public void run() {
 		long average = 0;
+		int initialValSize = 0, finalValSize = 0;
 		for (int times = 0; times < 12; times++) {
 			String csvFile = "";
 			// System.out.println(new File("bin/licenseplates.csv").canRead());
@@ -32,6 +33,7 @@ public class licenseFinder {
 				System.out.println("File not found");
 			}
 			String[] format = csvFile.split(",");
+			initialValSize = format.length;
 			ArrayList<String> output = new ArrayList<String>(5);
 			long then = System.nanoTime();
 			for (int i = 0; i < format.length; i++) {
@@ -44,8 +46,12 @@ public class licenseFinder {
 			}
 			long now = System.nanoTime();
 			average += (now - then);
+			finalValSize = output.size();
 		}
-		System.out.println("Average time; " + (average / 12)/Math.pow(10,9) + " seconds");
+		System.out.println("counted " + initialValSize
+				+ " elements resulting in " + finalValSize
+				+ " results in an average time of " + (average / 12)
+				/ Math.pow(10, 9) + " seconds");
 		// System.out.println(((now - then) / Math.pow(10, 9))
 		// + " times ten to the power of minus 9 nanoSeconds");
 		// for (String s : output) {
